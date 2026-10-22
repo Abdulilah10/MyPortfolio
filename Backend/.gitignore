@@ -1,0 +1,8 @@
+# MongoDB credentials
+.env
+
+# Dependencies
+node_modules/
+
+# Log files
+*.log
