@@ -1,7 +1,34 @@
-import jiraProject from "../assets/jira-project.jpg";
-import carDealership from "../assets/car-dealership.jpg";
+import { useState, useEffect } from "react";
 
 function Projects() {
+  const [projects, setProjects] = useState([]);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(true);
+
+  const API_URL = "http://localhost:3000/api/projects";
+
+  useEffect(() => {
+    async function loadProjects() {
+      try {
+        const response = await fetch(API_URL);
+        const result = await response.json();
+
+        if (!response.ok || !result.success) {
+          throw new Error(result.message);
+        }
+
+        setProjects(result.data);
+
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadProjects();
+  }, []);
+
   return (
     <main className="page">
       <section className="projects">
@@ -11,133 +38,51 @@ function Projects() {
           Here are some projects I have worked on during my studies.
         </p>
 
+        {loading && <p>Loading projects...</p>}
+
+        {error && <p>{error}</p>}
+
         <div className="projects-grid">
 
-          {/* Project 1 */}
-          <div className="project-card">
-            <div className="project-placeholder">
-              <span>Project Documentation</span>
+          {projects.map((project) => (
+            <div className="project-card" key={project.id}>
+
+              {project.image ? (
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="project-image"
+                />
+              ) : (
+                <div className="project-placeholder">
+                  <span>{project.title}</span>
+                </div>
+              )}
+
+              <div className="project-content">
+                <h2>{project.title}</h2>
+
+                <p style={{ whiteSpace: "pre-line" }}>
+                  {project.description}
+                </p>
+
+                <p>
+                  <strong>Completed:</strong>{" "}
+                  {project.completion
+                    ? project.completion.substring(0, 4)
+                    : "Not specified"}
+                </p>
+              </div>
+
             </div>
-
-            <div className="project-content">
-              <h2>Student Budget Tracker</h2>
-
-              <p>
-                A software project designed to help students manage their
-                income, expenses, categories, budget goals, and financial
-                notifications.
-              </p>
-
-              <p>
-                <strong>Role:</strong> Requirements analysis and system design
-              </p>
-
-              <p>
-                <strong>Outcome:</strong> Created requirements, use cases,
-                activity diagrams, class diagrams, and other system models.
-              </p>
-
-              <p>
-                <strong>Completed:</strong> 2025
-              </p>
-            </div>
-          </div>
-
-          {/* Project 2 */}
-          <div className="project-card">
-            <div className="project-placeholder">
-              <span>Web Development</span>
-            </div>
-
-            <div className="project-content">
-              <h2>Web Development Project</h2>
-
-              <p>
-                A website created using HTML and CSS as part of my web
-                development studies.
-              </p>
-
-              <p>
-                <strong>Role:</strong> Website design and development
-              </p>
-
-              <p>
-                <strong>Outcome:</strong> Built and organized web pages and
-                uploaded the completed website to a web server using FileZilla.
-              </p>
-
-              <p>
-                <strong>Completed:</strong> 2025
-              </p>
-            </div>
-          </div>
-
-          {/* Project 3 */}
-          <div className="project-card">
-            <img
-              src={jiraProject}
-              alt="Jira backlog for Sports Store Website project"
-              className="project-image"
-            />
-
-            <div className="project-content">
-              <h2>Sports Store Website</h2>
-
-              <p>
-                A team web development project for an online sports store
-                selling products such as shirts, balls, and other sports items.
-              </p>
-
-              <p>
-                <strong>Role:</strong> Project planning and web development
-              </p>
-
-              <p>
-                <strong>Outcome:</strong> Used Jira to organize user stories,
-                priorities, estimates, and tasks for customers, managers,
-                administrators, and other user roles.
-              </p>
-
-              <p>
-                <strong>Completed:</strong> 2025
-              </p>
-            </div>
-          </div>
-
-          {/* Project 4 */}
-          <div className="project-card">
-            <img
-              src={carDealership}
-              alt="Car Dealership Web Application"
-              className="project-image"
-            />
-
-            <div className="project-content">
-              <h2>Car Dealership Web Application</h2>
-
-              <p>
-                A web application designed to support buying and selling cars
-                online, including vehicle listings, customer accounts, test
-                drive scheduling, and customer inquiries.
-              </p>
-
-              <p>
-                <strong>Role:</strong> Team project planning and web development
-              </p>
-
-              <p>
-                <strong>Outcome:</strong> Developed a car dealership web
-                application with different user roles including buyers,
-                sellers, and administrators.
-              </p>
-
-              <p>
-                <strong>Completed:</strong> 2025
-              </p>
-            </div>
-          </div>
+          ))}
 
         </div>
+
+        {!loading && !error && projects.length === 0 && (
+          <p>No projects available.</p>
+        )}
+
       </section>
     </main>
   );

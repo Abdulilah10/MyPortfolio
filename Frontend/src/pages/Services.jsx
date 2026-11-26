@@ -1,35 +1,57 @@
+import { useState, useEffect } from "react";
+
 function Services() {
+  const [services, setServices] = useState([]);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(true);
+
+  const API_URL = "http://localhost:3000/api/services";
+
+  useEffect(() => {
+    async function loadServices() {
+      try {
+        const response = await fetch(API_URL);
+        const result = await response.json();
+
+        if (!response.ok || !result.success) {
+          throw new Error(result.message);
+        }
+
+        setServices(result.data);
+
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadServices();
+  }, []);
+
   return (
     <main>
       <section className="services">
         <h1>My Services</h1>
 
-        <div className="service-card">
-          <h2>Web Development</h2>
-          <p>
-            I create simple and responsive websites using HTML, CSS,
-            JavaScript, and React.
-          </p>
-        </div>
+        {loading && <p>Loading services...</p>}
 
-        <div className="service-card">
-          <h2>Programming</h2>
-          <p>
-            I develop applications and solve programming problems using
-            languages such as Java, C#, and Python.
-          </p>
-        </div>
+        {error && <p>{error}</p>}
 
-        <div className="service-card">
-          <h2>Software Design</h2>
-          <p>
-            I design software solutions using requirements, use cases,
-            diagrams, and object-oriented design.
-          </p>
-        </div>
+        {services.map((service) => (
+          <div className="service-card" key={service.id}>
+            <h2>{service.title}</h2>
+            <p>{service.description}</p>
+          </div>
+        ))}
+
+        {!loading && !error && services.length === 0 && (
+          <p>No services available.</p>
+        )}
+
       </section>
     </main>
-  )
+  );
 }
 
-export default Services
+export default Services;

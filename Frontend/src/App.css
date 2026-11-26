@@ -1078,3 +1078,37 @@ header {
     text-align: center;
     margin-top: 15px;
 }
+
+/* References Page Improvements */
+
+.references {
+  padding: 40px 20px;
+}
+
+.references h1 {
+  color: #ffffff;
+}
+
+.references-grid {
+  display: flex;
+  justify-content: center;
+}
+
+.reference-card {
+  background-color: #172236;
+  border: 1px solid #2c3b50;
+  border-radius: 15px;
+  padding: 30px;
+  max-width: 850px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.reference-card h2 {
+  color: #eab308;
+}
+
+.reference-info span {
+  color: #e2e8f0;
+  line-height: 1.7;
+}
