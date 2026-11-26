@@ -6,6 +6,10 @@ import Projects from './pages/Projects'
 import Services from './pages/Services'
 import References from './pages/References'
 import Contact from './pages/Contact'
+import AdminDashboard from './pages/AdminDashboard'
+import UsersList from './pages/admin/UsersList'
+import AddUser from './pages/admin/AddUser'
+import EditUser from './pages/admin/EditUser'
 import logo from './assets/logo.png'
 import './App.css'
 
@@ -15,7 +19,7 @@ function App() {
       <header>
         <nav className="navbar">
           <Link to="/" className="logo">
-           <img src={logo} alt="Abdulilah Ahmedin Logo" />
+            <img src={logo} alt="Abdulilah Ahmedin Logo" />
           </Link>
 
           <div className="nav-links">
@@ -25,6 +29,7 @@ function App() {
             <Link to="/services">Services</Link>
             <Link to="/references">References</Link>
             <Link to="/contact">Contact Me</Link>
+            <Link to="/admin">Admin Dashboard</Link>
           </div>
         </nav>
       </header>
@@ -36,6 +41,10 @@ function App() {
         <Route path="/services" element={<Services />} />
         <Route path="/references" element={<References />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/admin" element={<AdminDashboard />} />
+        <Route path="/admin/users" element={<UsersList />} />
+        <Route path="/admin/users/add" element={<AddUser />} />
+        <Route path="/admin/users/edit/:id" element={<EditUser />} />
       </Routes>
     </BrowserRouter>
   )

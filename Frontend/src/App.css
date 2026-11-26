@@ -925,3 +925,156 @@ header {
 .project-placeholder {
   height: 230px;
 }
+
+/* Admin Dashboard */
+
+.admin-dashboard {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.admin-dashboard h1 {
+    color: #ffffff;
+}
+
+.admin-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 800px;
+    margin: 40px auto;
+}
+
+.admin-grid a {
+    background-color: #1c3555;
+    color: white;
+    padding: 35px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.admin-grid a:hover {
+    background-color: #294c75;
+}
+
+@media (max-width: 600px) {
+    .admin-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Admin CRUD Pages */
+
+.admin-page {
+    padding: 40px 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+    color: white;
+}
+
+.admin-page h1 {
+    color: white;
+    margin-bottom: 25px;
+}
+
+.admin-page a {
+    color: #a8c7fa;
+    text-decoration: none;
+}
+
+.admin-page a:hover {
+    text-decoration: underline;
+}
+
+/* Admin Tables */
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+}
+
+.admin-table th,
+.admin-table td {
+    padding: 15px;
+    border: 1px solid #34445e;
+    text-align: center;
+}
+
+.admin-table th {
+    background-color: #1c3555;
+    color: white;
+}
+
+.admin-table td {
+    background-color: #182235;
+}
+
+.admin-table button {
+    background-color: #b91c1c;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+.admin-table button:hover {
+    background-color: #991b1b;
+}
+
+/* Admin Forms */
+
+.admin-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    margin: 30px auto;
+    padding: 30px;
+    background-color: #1c3555;
+    border-radius: 10px;
+    text-align: left;
+}
+
+.admin-form label {
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.admin-form input,
+.admin-form textarea {
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #526580;
+    border-radius: 5px;
+    background-color: #101727;
+    color: white;
+    font-size: 16px;
+}
+
+.admin-form button {
+    padding: 12px;
+    background-color: #35649a;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.admin-form button:hover {
+    background-color: #294c75;
+}
+
+.admin-form button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.admin-form a {
+    text-align: center;
+    margin-top: 15px;
+}
