@@ -13,6 +13,9 @@ import EditUser from './pages/admin/EditUser'
 import ProjectsList from './pages/admin/ProjectsList'
 import AddProject from './pages/admin/AddProject'
 import EditProject from './pages/admin/EditProject'
+import ServicesList from "./pages/admin/ServicesList";
+import AddService from "./pages/admin/AddService";
+import EditService from "./pages/admin/EditService";
 import logo from './assets/logo.png'
 import './App.css'
 
@@ -51,6 +54,9 @@ function App() {
         <Route path="/admin/projects" element={<ProjectsList />} />
         <Route path="/admin/projects/add" element={<AddProject />} />
         <Route path="/admin/projects/edit/:id" element={<EditProject />} />
+        <Route path="/admin/services" element={<ServicesList />} />
+        <Route path="/admin/services/add" element={<AddService />} />
+        <Route path="/admin/services/edit/:id" element={<EditService />} />
       </Routes>
     </BrowserRouter>
   )
