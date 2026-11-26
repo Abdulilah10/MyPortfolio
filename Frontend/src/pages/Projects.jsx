@@ -5,7 +5,7 @@ function Projects() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
 
-  const API_URL = "http://localhost:3000/api/projects";
+  const API_URL = (import.meta.env.VITE_API_URL || "http://localhost:3000") + "/api/projects";
 
   useEffect(() => {
     async function loadProjects() {

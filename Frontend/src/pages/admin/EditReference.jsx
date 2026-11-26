@@ -15,7 +15,7 @@ export default function EditReference() {
     const [error, setError] = useState("");
     const [loaded, setLoaded] = useState(false);
 
-    const API_URL = "http://localhost:3000/api/references";
+    const API_URL = (import.meta.env.VITE_API_URL || "http://localhost:3000") + "/api/references";
 
     useEffect(() => {
         async function loadReference() {

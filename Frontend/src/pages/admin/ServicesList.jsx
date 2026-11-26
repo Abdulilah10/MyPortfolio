@@ -5,7 +5,7 @@ export default function ServicesList() {
     const [services, setServices] = useState([]);
     const [error, setError] = useState("");
 
-    const API_URL = "http://localhost:3000/api/services";
+    const API_URL = (import.meta.env.VITE_API_URL || "http://localhost:3000") + "/api/services";
 
     async function loadServices() {
         try {

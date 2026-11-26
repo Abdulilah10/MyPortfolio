@@ -11,7 +11,7 @@ export default function AddService() {
 
     const [error, setError] = useState("");
 
-    const API_URL = "http://localhost:3000/api/services";
+    const API_URL = (import.meta.env.VITE_API_URL || "http://localhost:3000") + "/api/services";
 
     function handleChange(event) {
         setService({

@@ -5,7 +5,7 @@ export default function ProjectsList() {
     const [projects, setProjects] = useState([]);
     const [error, setError] = useState("");
 
-    const API_URL = "http://localhost:3000/api/projects";
+    const API_URL = (import.meta.env.VITE_API_URL || "http://localhost:3000") + "/api/projects";
 
     async function loadProjects() {
         try {

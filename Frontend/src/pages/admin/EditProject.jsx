@@ -15,7 +15,7 @@ export default function EditProject() {
     const [error, setError] = useState("");
     const [loaded, setLoaded] = useState(false);
 
-    const API_URL = "http://localhost:3000/api/projects";
+    const API_URL = (import.meta.env.VITE_API_URL || "http://localhost:3000") + "/api/projects";
 
     useEffect(() => {
         async function loadProject() {
