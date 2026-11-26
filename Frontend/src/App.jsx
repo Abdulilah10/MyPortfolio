@@ -10,6 +10,9 @@ import AdminDashboard from './pages/AdminDashboard'
 import UsersList from './pages/admin/UsersList'
 import AddUser from './pages/admin/AddUser'
 import EditUser from './pages/admin/EditUser'
+import ProjectsList from './pages/admin/ProjectsList'
+import AddProject from './pages/admin/AddProject'
+import EditProject from './pages/admin/EditProject'
 import logo from './assets/logo.png'
 import './App.css'
 
@@ -45,6 +48,9 @@ function App() {
         <Route path="/admin/users" element={<UsersList />} />
         <Route path="/admin/users/add" element={<AddUser />} />
         <Route path="/admin/users/edit/:id" element={<EditUser />} />
+        <Route path="/admin/projects" element={<ProjectsList />} />
+        <Route path="/admin/projects/add" element={<AddProject />} />
+        <Route path="/admin/projects/edit/:id" element={<EditProject />} />
       </Routes>
     </BrowserRouter>
   )
