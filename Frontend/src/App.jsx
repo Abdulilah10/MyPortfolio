@@ -16,6 +16,9 @@ import EditProject from './pages/admin/EditProject'
 import ServicesList from "./pages/admin/ServicesList";
 import AddService from "./pages/admin/AddService";
 import EditService from "./pages/admin/EditService";
+import ReferencesList from "./pages/admin/ReferencesList";
+import AddReference from "./pages/admin/AddReference";
+import EditReference from "./pages/admin/EditReference";
 import logo from './assets/logo.png'
 import './App.css'
 
@@ -57,6 +60,9 @@ function App() {
         <Route path="/admin/services" element={<ServicesList />} />
         <Route path="/admin/services/add" element={<AddService />} />
         <Route path="/admin/services/edit/:id" element={<EditService />} />
+        <Route path="/admin/references" element={<ReferencesList />} />
+        <Route path="/admin/references/add" element={<AddReference />} />
+        <Route path="/admin/references/edit/:id" element={<EditReference />} />
       </Routes>
     </BrowserRouter>
   )
