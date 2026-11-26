@@ -1,4 +1,3 @@
-
 const Service = require('../models/service');
 
 // GET ALL SERVICES

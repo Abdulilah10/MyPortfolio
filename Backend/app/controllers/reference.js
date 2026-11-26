@@ -1,4 +1,3 @@
-
 const Reference = require('../models/reference');
 
 // GET ALL REFERENCES

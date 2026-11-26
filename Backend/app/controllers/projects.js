@@ -1,4 +1,3 @@
-
 const Project = require('../models/project');
 
 // GET ALL PROJECTS
